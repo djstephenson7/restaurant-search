@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { View, Text, ScrollView } from "react-native";
-import SearchBar from "../components/SearchBar";
-import useResults from "../hooks/useResults";
-import ResultsList from "../components/ResultsList";
+import React, { useState } from 'react';
+import { View, Text, ScrollView } from 'react-native';
+import SearchBar from '../components/SearchBar';
+import useResults from '../hooks/useResults';
+import ResultsList from '../components/ResultsList';
 
 const SearchScreen = () => {
-  const [term, setTerm] = useState("");
+  const [term, setTerm] = useState('');
   const [searchApi, results, error] = useResults();
 
   const filterResultsByPrice = price => {
@@ -22,19 +22,18 @@ const SearchScreen = () => {
         onTermSubmit={() => searchApi(term)}
       />
       {error ? <Text>Something went wrong!</Text> : null}
-      <Text>We have found {results.length} results</Text>
       <ScrollView>
         <ResultsList
-          results={filterResultsByPrice("£")}
+          results={filterResultsByPrice('£')}
           title="Cost Effective"
         />
-        <ResultsList results={filterResultsByPrice("££")} title="Bit Pricier" />
+        <ResultsList results={filterResultsByPrice('££')} title="Bit Pricier" />
         <ResultsList
-          results={filterResultsByPrice("£££")}
+          results={filterResultsByPrice('£££')}
           title="Big Spender"
         />
         <ResultsList
-          results={filterResultsByPrice("££££")}
+          results={filterResultsByPrice('££££')}
           title="Lottery Winner!"
         />
       </ScrollView>
