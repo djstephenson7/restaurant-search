@@ -19,24 +19,50 @@ const ResultsShowScreen = ({ navigation }) => {
     return null;
   }
 
+  console.log(result);
+
   return (
     <View>
-      <Text>{result.name}</Text>
       <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
         data={result.photos}
         keyExtractor={photo => photo}
         renderItem={({ item }) => (
           <Image style={styles.image} source={{ uri: item }} />
         )}
       />
+      <Text style={styles.title}>{result.name}</Text>
+      <Text style={styles.subheader}>Address:</Text>
+      <FlatList
+        data={result.location.display_address}
+        keyExtractor={location => location}
+        renderItem={({ item }) => {
+          return <Text>{item}</Text>;
+        }}
+      />
+      <Text>Price: {result.price}</Text>
+      <Text>Rating: {result.rating}</Text>
+      <Text>Number of reviews: {result.review_count}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  title: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    padding: 10
+  },
+  subheader: {
+    fontWeight: 'bold',
+    fontSize: 14,
+    padding: 10
+  },
   image: {
     height: 200,
-    width: 300
+    width: 300,
+    margin: 10
   }
 });
 
