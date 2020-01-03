@@ -32,32 +32,48 @@ const ResultsShowScreen = ({ navigation }) => {
           <Image style={styles.image} source={{ uri: item }} />
         )}
       />
-      <Text style={styles.title}>{result.name}</Text>
-      <Text style={styles.subheader}>Address:</Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>{result.name}</Text>
+        <Text style={styles.price}>Price: {result.price}</Text>
+      </View>
+      <Text style={styles.addressHeader}>Address:</Text>
       <FlatList
+        style={styles.text}
         data={result.location.display_address}
         keyExtractor={location => location}
         renderItem={({ item }) => {
           return <Text>{item}</Text>;
         }}
       />
-      <Text>Price: {result.price}</Text>
-      <Text>Rating: {result.rating}</Text>
-      <Text>Number of reviews: {result.review_count}</Text>
+      <Text style={styles.text}>Rating: {result.rating}</Text>
+      <Text style={styles.text}>Number of reviews: {result.review_count}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row'
+  },
   title: {
     fontWeight: 'bold',
     fontSize: 18,
     padding: 10
   },
-  subheader: {
+  price: {
+    padding: 10,
+    paddingTop: 12,
+    marginLeft: 'auto'
+  },
+  addressHeader: {
     fontWeight: 'bold',
     fontSize: 14,
-    padding: 10
+    paddingLeft: 10
+  },
+  text: {
+    fontSize: 14,
+    padding: 10,
+    paddingTop: 0
   },
   image: {
     height: 200,

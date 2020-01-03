@@ -1,5 +1,5 @@
-import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import React from 'react';
+import { Text, View, StyleSheet, Image } from 'react-native';
 
 const ResultsDetail = ({ result }) => {
   return (
@@ -24,10 +24,10 @@ const styles = StyleSheet.create({
     marginBottom: 5
   },
   name: {
-    fontWeight: "bold"
+    fontWeight: 'bold'
   },
   subheader: {
-    color: "gray"
+    color: 'gray'
   }
 });
 
